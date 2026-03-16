@@ -36,10 +36,34 @@ class LinkedList:
         self.head = new_node
 
 
+    def remove_node (self , value):
+        current = self.head
+        # either use temporary var (previous) | use current.next = current.next.next is last line 
+        #  I prefer temporary variable 
+        previous = None
+
+        # if node is first one 
+        if current.data == value:
+            self.head  = current.Next
+
+        # looping over until : Node findOut 
+        while current and current.data != value :
+            previous = current
+            current = current.Next
+
+        if  current is None:
+            print('value not found!')
+            return
+            
+            # delete the last Node or the middle one 
+        previous.Next = current.Next
 # ===================================
 LL = LinkedList() 
 LL.insert_at_End(5)
 LL.insert_at_End(15)
 LL.insert_at_Beg(3)
 
+LL.display()
+
+LL.remove_node(5)
 LL.display()
